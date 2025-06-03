@@ -160,6 +160,11 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
         }
         public void LogChange(string logMessage, string path)
         {
+            if (path != "logFile.txt")
+            {
+                path = "logFile.txt";
+            }
+
             using (StreamWriter writetext = new StreamWriter(path, append: true))
             {
                 writetext.WriteLine($"{logMessage}");
