@@ -5,7 +5,7 @@ using DataAccessLayer.Models;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KE03_INTDEV_SE_2_Base
+namespace KE03_INTDEV_SE_2_Base.Controllers
 {
     public class ProductsController : Controller
     {
