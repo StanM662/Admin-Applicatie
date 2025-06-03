@@ -20,6 +20,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+<<<<<<< HEAD
 
 .dashboard {
     display: grid;
@@ -33,3 +34,5 @@ body {
     border-radius: 10px;
     font-size: 18px;
 }
+
+
