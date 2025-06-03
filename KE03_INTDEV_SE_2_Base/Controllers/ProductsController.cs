@@ -4,6 +4,7 @@ using DataAccessLayer;
 using DataAccessLayer.Models;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace KE03_INTDEV_SE_2_Base.Controllers
 {
@@ -51,6 +52,8 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            string logMessage = $"Created product {product.Name} with ID {product.Id} at {DateTime.Now}.";
+            LogChange(logMessage, "logFile.txt");
             return View(product);
         }
 
@@ -62,6 +65,8 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
             var product = await _context.Set<Product>().FindAsync(id);
             if (product == null) return NotFound();
 
+            string logMessage = $"Edited product {product.Name} with ID {product.Id} at {DateTime.Now}.";
+            LogChange(logMessage, "logFile.txt");
             return View(product);
         }
 
@@ -88,6 +93,8 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            string logMessage = $"Edited product {product.Name} with ID {product.Id} at {DateTime.Now}.";
+            LogChange(logMessage, "logFile.txt");
             return View(product);
         }
 
@@ -98,7 +105,6 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
 
             var product = await _context.Set<Product>().FirstOrDefaultAsync(m => m.Id == id);
             if (product == null) return NotFound();
-
             return View(product);
         }
 
@@ -113,9 +119,19 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
                 _context.Set<Product>().Remove(product);
                 await _context.SaveChangesAsync();
             }
-
+            string logMessage = $"Deleted product {product.Name} with ID {product.Id} at {DateTime.Now}.";
+            LogChange(logMessage, "logFile.txt");
             return RedirectToAction(nameof(Index));
         }
+
+        public void LogChange(string logMessage, string path)
+        {
+            using (StreamWriter writetext = new StreamWriter(path))
+            {
+                writetext.WriteLine(logMessage);
+            }
+        }
+
 
         private bool ProductExists(int id)
         {
