@@ -1,18 +1,30 @@
-using System.Diagnostics;
-using KE03_INTDEV_SE_2_Base.Models;
+using DataAccessLayer;
+using KE03_INTDEV_SE_2_Base.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using KE03_INTDEV_SE_2_Base.ViewModels; 
 
-namespace KE03_INTDEV_SE_2_Base.Controllers
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    private readonly MatrixIncDbContext _context;
+
+    public HomeController(MatrixIncDbContext context)
     {
-        private readonly ILogger<HomeController> _logger;
+        _context = context;
+    }
 
-        public HomeController(ILogger<HomeController> logger)
+    public IActionResult Index()
+    {
+        var viewModel = new DashboardViewModel
         {
-            _logger = logger;
-        }
+            TotalCustomers = _context.Customers.Count(),
+            TotalOrders = _context.Orders.Count(),
+            TotalProducts = _context.Products.Count(),
+            TotalParts = _context.Parts.Count()
+        };
 
+<<<<<<< HEAD
+        return View(viewModel);
+=======
         public IActionResult Index()
         {
             return View();
@@ -22,11 +34,16 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
         {
             return View();
         }
+        public IActionResult Logs()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+>>>>>>> 2c81667e6208947082015ce8365faece0c4f8c53
     }
 }

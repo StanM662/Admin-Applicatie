@@ -1,0 +1,6 @@
+<<<<<<< HEAD
+Deleted product Schroef with ID 4 at 3-6-2025 13:31:59.
+=======
+Edited customer John Matrix with ID 4 at 3-6-2025 13:03:25.
+Edited customer John Matrix with ID 4 at 3-6-2025 13:04:47.
+>>>>>>> 2c81667e6208947082015ce8365faece0c4f8c53

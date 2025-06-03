@@ -20,3 +20,20 @@ html {
 body {
   margin-bottom: 60px;
 }
+<<<<<<< HEAD
+
+.dashboard {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.dashboard div {
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+=======
+>>>>>>> 2c81667e6208947082015ce8365faece0c4f8c53
