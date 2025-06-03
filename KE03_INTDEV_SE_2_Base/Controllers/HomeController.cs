@@ -22,28 +22,22 @@ public class HomeController : Controller
             TotalParts = _context.Parts.Count()
         };
 
-<<<<<<< HEAD
+
         return View(viewModel);
-=======
-        public IActionResult Index()
-        {
-            return View();
-        }
+    }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-        public IActionResult Logs()
-        {
-            return View();
-        }
+    public IActionResult Privacy()
+    {
+        return View();
+    }
+    public IActionResult Logs()
+    {
+        return View();
+    }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
->>>>>>> 2c81667e6208947082015ce8365faece0c4f8c53
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View();
     }
 }

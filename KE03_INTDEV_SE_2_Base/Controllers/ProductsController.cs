@@ -5,6 +5,7 @@ using DataAccessLayer.Models;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
+using System;
 
 namespace KE03_INTDEV_SE_2_Base.Controllers
 {
@@ -17,14 +18,12 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
             _context = context;
         }
 
-        // GET: Products
         public async Task<IActionResult> Index()
         {
             var products = await _context.Set<Product>().ToListAsync();
             return View(products);
         }
 
-        // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null) return NotFound();
@@ -35,13 +34,11 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
             return View(product);
         }
 
-        // GET: Products/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Products/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Name,Description,Price")] Product product)
@@ -50,14 +47,13 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
+
+                LogChange($"Created product {product.Name} with ID {product.Id} at {DateTime.Now}.", "logFile.txt");
                 return RedirectToAction(nameof(Index));
             }
-            string logMessage = $"Created product {product.Name} with ID {product.Id} at {DateTime.Now}.";
-            LogChange(logMessage, "logFile.txt");
             return View(product);
         }
 
-        // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -65,12 +61,9 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
             var product = await _context.Set<Product>().FindAsync(id);
             if (product == null) return NotFound();
 
-            string logMessage = $"Edited product {product.Name} with ID {product.Id} at {DateTime.Now}.";
-            LogChange(logMessage, "logFile.txt");
             return View(product);
         }
 
-        // POST: Products/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price")] Product product)
@@ -83,34 +76,29 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
                 {
                     _context.Update(product);
                     await _context.SaveChangesAsync();
+
+                    LogChange($"Edited product {product.Name} with ID {product.Id} at {DateTime.Now}.", "logFile.txt");
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.Id))
-                        return NotFound();
-                    else
-                        throw;
+                    if (!ProductExists(product.Id)) return NotFound();
+                    else throw;
                 }
-                return RedirectToAction(nameof(Index));
             }
-            string logMessage = $"Edited product {product.Name} with ID {product.Id} at {DateTime.Now}.";
-            LogChange(logMessage, "logFile.txt");
             return View(product);
         }
 
-        // GET: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
 
             var product = await _context.Set<Product>().FirstOrDefaultAsync(m => m.Id == id);
             if (product == null) return NotFound();
-            string logMessage = $"Deleted product {product.Name} with ID {product.Id} at {DateTime.Now}.";
-            LogChange(logMessage, "logFile.txt");
+
             return View(product);
         }
 
-        // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -120,26 +108,22 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
             {
                 _context.Set<Product>().Remove(product);
                 await _context.SaveChangesAsync();
+
+                LogChange($"Deleted product {product.Name} with ID {product.Id} at {DateTime.Now}.", "logFile.txt");
             }
-            string logMessage = $"Deleted product {product.Name} with ID {product.Id} at {DateTime.Now}.";
-            LogChange(logMessage, "logFile.txt");
             return RedirectToAction(nameof(Index));
         }
 
-        public void LogChange(string logMessage, string path)
+        private void LogChange(string logMessage, string path)
         {
-            if (path != "logFile.txt")
-            {
-                path = "logFile.txt";
-            }
+            if (path != "logFile.txt") path = "logFile.txt";
 
             using (StreamWriter writetext = new StreamWriter(path, append: true))
             {
-                writetext.WriteLine($"{logMessage}");
+                writetext.WriteLine(logMessage);
                 writetext.Flush();
             }
         }
-
 
         private bool ProductExists(int id)
         {

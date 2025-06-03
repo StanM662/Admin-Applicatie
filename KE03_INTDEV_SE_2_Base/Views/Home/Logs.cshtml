@@ -11,18 +11,20 @@
         List<string> strings = new List<string>();
         using (StreamReader readtext = new StreamReader("logFile.txt"))
         {
-            string readText = readtext.ReadLine();
-            strings.Add(readText);
+            string? line;
+            while ((line = readtext.ReadLine()) != null)
+            {
+                strings.Add(line);
+            }
         }
 
         foreach (var line in strings)
         {
             <div class="log">
-                <p class="logline">@line</p><br />
+                <p class="logline">@line</p>
             </div>
         }
     }
-
     catch (Exception ex)
     {
         Console.WriteLine(ex);
