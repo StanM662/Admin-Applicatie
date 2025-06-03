@@ -105,6 +105,8 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
 
             var product = await _context.Set<Product>().FirstOrDefaultAsync(m => m.Id == id);
             if (product == null) return NotFound();
+            string logMessage = $"Deleted product {product.Name} with ID {product.Id} at {DateTime.Now}.";
+            LogChange(logMessage, "logFile.txt");
             return View(product);
         }
 
@@ -126,9 +128,10 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
 
         public void LogChange(string logMessage, string path)
         {
-            using (StreamWriter writetext = new StreamWriter(path))
+            using (StreamWriter writetext = new StreamWriter(path, append: true))
             {
-                writetext.WriteLine(logMessage);
+                writetext.WriteLine($"{logMessage}");
+                writetext.Flush();
             }
         }
 

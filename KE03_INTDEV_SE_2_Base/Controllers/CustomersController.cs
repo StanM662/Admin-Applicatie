@@ -62,6 +62,8 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            string logMessage = $"Created customer {customer.Name} with ID {customer.Id} at {DateTime.Now}.";
+            LogChange(logMessage, "logFile.txt");
             return View(customer);
         }
 
@@ -78,6 +80,8 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
             {
                 return NotFound();
             }
+            string logMessage = $"Edited customer {customer.Name} with ID {customer.Id} at {DateTime.Now}.";
+            LogChange(logMessage, "logFile.txt");
             return View(customer);
         }
 
@@ -113,6 +117,8 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            string logMessage = $"Edited customer {customer.Name} with ID {customer.Id} at {DateTime.Now}.";
+            LogChange(logMessage, "logFile.txt");
             return View(customer);
         }
 
@@ -130,8 +136,10 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
             {
                 return NotFound();
             }
-
+            string logMessage = $"Deleted customer {customer.Name} with ID {customer.Id} at {DateTime.Now}.";
+            LogChange(logMessage, "logFile.txt");
             return View(customer);
+
         }
 
         // POST: Products/Delete/5
@@ -146,9 +154,18 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
             }
 
             await _context.SaveChangesAsync();
+            string logMessage = $"Deleted customer {customer.Name} with ID {customer.Id} at {DateTime.Now}.";
+            LogChange(logMessage, "logFile.txt");
             return RedirectToAction(nameof(Index));
         }
-
+        public void LogChange(string logMessage, string path)
+        {
+            using (StreamWriter writetext = new StreamWriter(path, append: true))
+            {
+                writetext.WriteLine($"{logMessage}");
+                writetext.Flush();
+            }
+        }
         private bool CustomerExists(int id)
         {
             return _context.Customers.Any(e => e.Id == id);
