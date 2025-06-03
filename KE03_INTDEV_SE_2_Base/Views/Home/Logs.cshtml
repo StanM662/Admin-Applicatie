@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Logs";
+}
+
+<div class="alert-info">
+    <p>Hieronder staan de logs van de applicatie.</p>
+</div>
+@{
+    try
+    {
+        List<string> strings = new List<string>();
+        using (StreamReader readtext = new StreamReader("logFile.txt"))
+        {
+            string readText = readtext.ReadLine();
+            strings.Add(readText);
+        }
+
+        foreach (var line in strings)
+        {
+            <div class="log">
+                <p class="logline">@line</p><br />
+            </div>
+        }
+    }
+
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex);
+    }
+}
