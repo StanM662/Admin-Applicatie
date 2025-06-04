@@ -117,10 +117,11 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
         private void LogChange(string logMessage, string path)
         {
             if (path != "logFile.txt") path = "logFile.txt";
+            var userName = HttpContext?.Session?.GetString("UserName") ?? "Unknown";
 
             using (StreamWriter writetext = new StreamWriter(path, append: true))
             {
-                writetext.WriteLine(logMessage);
+                writetext.WriteLine($"{logMessage}   -   {userName}");
                 writetext.Flush();
             }
         }

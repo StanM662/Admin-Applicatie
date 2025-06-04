@@ -1,0 +1,48 @@
+﻿@model DataAccessLayer.Models.Account
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+
+@{
+    ViewData["Title"] = "Account";
+}
+
+@{
+    @if (HttpContextAccessor.HttpContext.Session.GetString("UserName") == null)
+    {
+        <h1>@ViewData["Title"]</h1>
+        <div class="alert alert-info">
+            <p>Log in om toegang te krijgen tot de applicatie.</p>
+
+        </div>
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" type="password"/>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+    }
+
+    @if (HttpContextAccessor.HttpContext.Session.GetString("UserName") != null)
+    {
+        <div class="alert alert-success">
+            Welcome, @HttpContextAccessor.HttpContext.Session.GetString("UserName")!
+        </div>
+        <form asp-action="Logout">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="submit" value="Logout" class="btn btn-primary" />
+            </div>
+        </form>
+    }
+}

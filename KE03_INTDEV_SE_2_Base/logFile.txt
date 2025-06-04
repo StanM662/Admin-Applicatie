@@ -4,3 +4,21 @@ Edited customer John Matrix with ID 4 at 3-6-2025 13:04:47.
 Created customer stan with ID 5 at 3-6-2025 14:06:39.
 Edited customer standfwrtwerte with ID 5 at 3-6-2025 14:06:51.
 Created product dfwrwggsfsfg with ID 10 at 3-6-2025 14:07:03.
+Edited customer Stan Morreau with ID 5 at 4-6-2025 12:06:33.
+Deleted customer John Matrix with ID 4 at 4-6-2025 12:06:38.
+Deleted product dfwrwggsfsfg with ID 10 at 4-6-2025 12:06:48.
+Account Stan logged in at 4-6-2025 12:41:52.
+Invalid login attempt for account sgsgsfg at 4-6-2025 12:41:57.
+Account Stan logged in at 4-6-2025 12:44:19.
+User logged out at 4-6-2025 12:44:21.
+Account Stan logged in at 4-6-2025 12:45:29.
+Account  logged out at 4-6-2025 12:45:30.
+Account Stan logged in at 4-6-2025 12:46:08.
+Account  logged out at 4-6-2025 12:46:09.
+Account Stan logged in at 4-6-2025 12:49:18.
+Account Stan logged out at 4-6-2025 12:49:19.
+Account Stan logged in at 4-6-2025 12:51:38.
+Account Stan logged out at 4-6-2025 12:51:42.
+Account Stan logged in at 4-6-2025 12:54:09.
+Created product Matrixbril with ID 4 at 4-6-2025 12:54:24.   -   Stan
+Account Stan logged out at 4-6-2025 12:54:36.

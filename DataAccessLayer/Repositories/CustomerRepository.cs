@@ -18,31 +18,31 @@ namespace DataAccessLayer.Repositories
             _context = context;
         }
 
-        public void AddCustomer(Product customer)
+        public void AddCustomer(Customer customer)
         {
-            _context.Products.Add(customer);
+            _context.Customers.Add(customer);
             _context.SaveChanges();
         }
 
-        public void DeleteCustomer(Product customer)
+        public void DeleteCustomer(Customer customer)
         {
-            _context.Products.Remove(customer);
+            _context.Customers.Remove(customer);
             _context.SaveChanges();
         }
 
-        public IEnumerable<Product> GetAllCustomers()
+        public IEnumerable<Customer> GetAllCustomers()
         {
-            return _context.Products.Include(c => c.Orders);
+            return _context.Customers.Include(c => c.Orders);
         }
 
-        public Product? GetCustomerById(int id)
+        public Customer? GetCustomerById(int id)
         {
-            return _context.Products.Include(c => c.Orders).FirstOrDefault(c => c.Id == id);
+            return _context.Customers.Include(c => c.Orders).FirstOrDefault(c => c.Id == id);
         }
 
-        public void UpdateCustomer(Product customer)
+        public void UpdateCustomer(Customer customer)
         {
-            _context.Products.Update(customer);
+            _context.Customers.Update(customer);
             _context.SaveChanges();
         }
     }

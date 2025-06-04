@@ -23,6 +23,11 @@ namespace KE03_INTDEV_SE_2_Base
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IPartRepository, PartRepository>();
+            builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+
+
+            builder.Services.AddSession();
+            builder.Services.AddHttpContextAccessor(); // Required for views to access session
 
             var app = builder.Build();
 
@@ -44,6 +49,7 @@ namespace KE03_INTDEV_SE_2_Base
                 MatrixIncDbInitializer.Initialize(context);
             }
 
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

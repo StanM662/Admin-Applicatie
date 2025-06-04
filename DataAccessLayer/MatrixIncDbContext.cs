@@ -13,6 +13,8 @@ namespace DataAccessLayer
         public DbSet<Order> Orders { get; set; }
         public DbSet<Part> Parts { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        
+        public DbSet<Account> Accounts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

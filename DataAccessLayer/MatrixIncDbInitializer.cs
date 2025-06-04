@@ -11,6 +11,8 @@ namespace DataAccessLayer
     {
         public static void Initialize(MatrixIncDbContext context)
         {
+            context.Database.EnsureCreated();
+
             if (context.Products.Any())
             {
                 return; // DB has been seeded
@@ -23,7 +25,7 @@ namespace DataAccessLayer
         new Customer { Name = "Trinity", Address = "789 Pine St", Active = true }
             };
             context.Customers.AddRange(customers);
-            context.SaveChanges(); // ✅ Save to generate IDs
+            context.SaveChanges();
 
             var orders = new Order[]
             {
@@ -51,9 +53,18 @@ namespace DataAccessLayer
             };
             context.Parts.AddRange(parts);
 
+            var accounts = new Account[]
+            {
+        new Account { Name = "Stan", Password = "Stan123" },
+        new Account { Name = "Rick", Password = "Rick123" },
+        new Account { Name = "Sander", Password = "Sander123" },
+        new Account { Name = "Guest", Password = "Guest123" }
+            };
+            context.Accounts.AddRange(accounts);
+
             context.SaveChanges();
 
-            context.Database.EnsureCreated();
+            
         }
 
     }
