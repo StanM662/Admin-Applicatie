@@ -9,31 +9,29 @@ using System;
 
 namespace KE03_INTDEV_SE_2_Base.Controllers
 {
-    public class ProductsController : Controller
+    public class PartsController : Controller
     {
         private readonly MatrixIncDbContext _context;
 
-        public ProductsController(MatrixIncDbContext context)
+        public PartsController(MatrixIncDbContext context)
         {
             _context = context;
         }
+
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Products.ToListAsync());
-        }
-        public async Task<IActionResult> PartsIndex()
-        {
-            return View(await _context.Parts.ToListAsync());
+            var parts = await _context.Parts.ToListAsync();
+            return View(parts);
         }
 
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null) return NotFound();
 
-            var product = await _context.Set<Product>().FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null) return NotFound();
+            var part = await _context.Set<Part>().FirstOrDefaultAsync(m => m.Id == id);
+            if (part == null) return NotFound();
 
-            return View(product);
+            return View(part);
         }
 
         public IActionResult Create()
@@ -43,75 +41,75 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Description,Price")] Product product)
+        public async Task<IActionResult> Create([Bind("Name,Description,Price")] Part part)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(product);
+                _context.Add(part);
                 await _context.SaveChangesAsync();
 
-                LogChange($"Created product {product.Name} with ID {product.Id} at {DateTime.Now}.", "logFile.txt");
+                LogChange($"Created part {part.Name} with ID {part.Id} at {DateTime.Now}.", "logFile.txt");
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            return View(part);
         }
 
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
 
-            var product = await _context.Set<Product>().FindAsync(id);
-            if (product == null) return NotFound();
+            var part = await _context.Set<Part>().FindAsync(id);
+            if (part == null) return NotFound();
 
-            return View(product);
+            return View(part);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price")] Part part)
         {
-            if (id != product.Id) return NotFound();
+            if (id != part.Id) return NotFound();
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(product);
+                    _context.Update(part);
                     await _context.SaveChangesAsync();
 
-                    LogChange($"Edited product {product.Name} with ID {product.Id} at {DateTime.Now}.", "logFile.txt");
+                    LogChange($"Edited part {part.Name} with ID {part.Id} at {DateTime.Now}.", "logFile.txt");
                     return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.Id)) return NotFound();
+                    if (!PartExists(part.Id)) return NotFound();
                     else throw;
                 }
             }
-            return View(product);
+            return View(part);
         }
 
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
 
-            var product = await _context.Set<Product>().FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null) return NotFound();
+            var part = await _context.Set<Part>().FirstOrDefaultAsync(m => m.Id == id);
+            if (part == null) return NotFound();
 
-            return View(product);
+            return View(part);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var product = await _context.Set<Product>().FindAsync(id);
-            if (product != null)
+            var part = await _context.Set<Part>().FindAsync(id);
+            if (part != null)
             {
-                _context.Set<Product>().Remove(product);
+                _context.Set<Part>().Remove(part);
                 await _context.SaveChangesAsync();
 
-                LogChange($"Deleted product {product.Name} with ID {product.Id} at {DateTime.Now}.", "logFile.txt");
+                LogChange($"Deleted part {part.Name} with ID {part.Id} at {DateTime.Now}.", "logFile.txt");
             }
             return RedirectToAction(nameof(Index));
         }
@@ -128,9 +126,9 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
             }
         }
 
-        private bool ProductExists(int id)
+        private bool PartExists(int id)
         {
-            return _context.Set<Product>().Any(e => e.Id == id);
+            return _context.Set<Part>().Any(e => e.Id == id);
         }
     }
 }

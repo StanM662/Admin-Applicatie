@@ -22,3 +22,7 @@ Account Stan logged out at 4-6-2025 12:51:42.
 Account Stan logged in at 4-6-2025 12:54:09.
 Created product Matrixbril with ID 4 at 4-6-2025 12:54:24.   -   Stan
 Account Stan logged out at 4-6-2025 12:54:36.
+Account Stan logged in at 4-6-2025 13:31:55.
+Account Stan logged in at 4-6-2025 13:37:26.
+Created product Red pill with ID 5 at 4-6-2025 13:37:38.   -   Stan
+Account Stan logged out at 4-6-2025 13:37:44.
