@@ -4,13 +4,82 @@
     ViewData["Title"] = "Dashboard";
 }
 
-<h1>Dashboard</h1>
+<div class="dashboard-container">
+    <h2 class="dashboard-title">Dashboard</h2>
 
-<div class="dashboard">
-    <div><strong>Totaal klanten:</strong> @Model.TotalCustomers</div>
-    <div><strong>Totaal bestellingen:</strong> @Model.TotalOrders</div>
-    <div><strong>Totaal producten:</strong> @Model.TotalProducts</div>
-    <div><strong>Totaal onderdelen:</strong> @Model.TotalParts</div>
+    <!-- Klanten -->
+    <div class="dashboard-card toggle-card">
+        <span class="dashboard-label">Totaal klanten:</span>
+        <span class="dashboard-value">@Model.TotalCustomers</span>
+    </div>
+    <div class="dropdown-content">
+        @if (Model.Customers != null && Model.Customers.Any())
+        {
+            foreach (var klant in Model.Customers)
+            {
+                <div>@klant.Name</div>
+            }
+        }
+        else
+        {
+            <div>Geen klanten gevonden.</div>
+        }
+    </div>
+
+    <!-- Bestellingen -->
+    <div class="dashboard-card toggle-card">
+        <span class="dashboard-label">Totaal bestellingen:</span>
+        <span class="dashboard-value">@Model.TotalOrders</span>
+    </div>
+    <div class="dropdown-content">
+        @if (Model.Orders != null && Model.Orders.Any())
+        {
+            foreach (var order in Model.Orders)
+            {
+                <div>Order #@order.Id - @order.OrderDate.ToShortDateString()</div>
+            }
+        }
+        else
+        {
+            <div>Geen bestellingen gevonden.</div>
+        }
+    </div>
+
+    <!-- Producten -->
+    <div class="dashboard-card toggle-card">
+        <span class="dashboard-label">Totaal producten:</span>
+        <span class="dashboard-value">@Model.TotalProducts</span>
+    </div>
+    <div class="dropdown-content">
+        @if (Model.Products != null && Model.Products.Any())
+        {
+            foreach (var product in Model.Products)
+            {
+                <div>@product.Name - €@product.Price</div>
+            }
+        }
+        else
+        {
+            <div>Geen producten gevonden.</div>
+        }
+    </div>
+
+    <!-- Onderdelen -->
+    <div class="dashboard-card toggle-card">
+        <span class="dashboard-label">Totaal onderdelen:</span>
+        <span class="dashboard-value">@Model.TotalParts</span>
+    </div>
+    <div class="dropdown-content">
+        @if (Model.Parts != null && Model.Parts.Any())
+        {
+            foreach (var part in Model.Parts)
+            {
+                <div>@part.Name - €@part.Price </div>
+            }
+        }
+        else
+        {
+            <div>Geen onderdelen gevonden.</div>
+        }
+    </div>
 </div>
-
-

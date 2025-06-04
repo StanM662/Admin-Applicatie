@@ -30,3 +30,10 @@ Account Stan logged in at 4-6-2025 13:54:57.
 Created product Part with ID 4 at 4-6-2025 13:55:16.   -   Stan
 Edited product Part with ID 4 at 4-6-2025 13:55:28.   -   Stan
 Account Stan logged out at 4-6-2025 13:55:36.
+Account Rick logged in at 4-6-2025 14:23:16.
+Account Rick logged in at 4-6-2025 14:24:58.
+Account Rick logged in at 4-6-2025 14:31:10.
+Account Rick logged in at 4-6-2025 14:36:27.
+Account Rick logged in at 4-6-2025 14:37:17.
+Account Rick logged in at 4-6-2025 14:40:03.
+Account Rick logged in at 4-6-2025 14:41:29.

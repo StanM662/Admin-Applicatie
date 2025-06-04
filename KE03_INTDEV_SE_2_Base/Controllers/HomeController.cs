@@ -19,9 +19,13 @@ public class HomeController : Controller
             TotalCustomers = _context.Customers.Count(),
             TotalOrders = _context.Orders.Count(),
             TotalProducts = _context.Products.Count(),
-            TotalParts = _context.Parts.Count()
-        };
+            TotalParts = _context.Parts.Count(),
 
+            Customers = _context.Customers.ToList(),
+            Orders = _context.Orders.ToList(),
+            Products = _context.Products.ToList(),
+            Parts = _context.Parts.ToList()
+        };
 
         return View(viewModel);
     }
