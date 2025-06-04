@@ -17,19 +17,6 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Signup([Bind("Id,Name,Password")] Account account)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(account);
-                await _context.SaveChangesAsync();
-
-                LogChange($"Account {account.Name} with ID {account.Id} signed up at {DateTime.Now}.", "logFile.txt");
-                return RedirectToAction(nameof(Index));
-            }
-            return View(account);
-        }
-
         public async Task<IActionResult> Logout()
         {
             var userName = HttpContext.Session.GetString("UserName") ?? "Unknown";
@@ -49,6 +36,7 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
                 if (matchedAccount != null)
                 {
                     HttpContext.Session.SetString("UserName", matchedAccount.Name);
+                    HttpContext.Session.SetString("isLoggedIn", "True");
                     LogChange($"Account {account.Name} logged in at {DateTime.Now}.", "logFile.txt");
                     return RedirectToAction(nameof(Index));
                 }

@@ -58,7 +58,7 @@ namespace DataAccessLayer
         new Account { Name = "Stan", Password = "Stan123" },
         new Account { Name = "Rick", Password = "Rick123" },
         new Account { Name = "Sander", Password = "Sander123" },
-        new Account { Name = "Guest", Password = "Guest123" }
+        new Account { Name = "123" , Password = "123" }
             };
             context.Accounts.AddRange(accounts);
 
