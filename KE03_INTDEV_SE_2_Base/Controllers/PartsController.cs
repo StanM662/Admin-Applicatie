@@ -40,7 +40,6 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Name,Description,Price")] Part part)
         {
             if (ModelState.IsValid)

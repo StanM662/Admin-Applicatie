@@ -1,7 +1,7 @@
 using DataAccessLayer;
 using KE03_INTDEV_SE_2_Base.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using KE03_INTDEV_SE_2_Base.ViewModels; 
+using DataAccessLayer.Models;
 
 public class HomeController : Controller
 {

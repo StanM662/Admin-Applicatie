@@ -10,6 +10,7 @@ namespace KE03_INTDEV_SE_2_Base
     {
         public static void Main(string[] args)
         {
+
             var cultureInfo = new CultureInfo("en-US");
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
@@ -30,9 +31,9 @@ namespace KE03_INTDEV_SE_2_Base
             builder.Services.AddScoped<IPartRepository, PartRepository>();
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
-
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             builder.Services.AddSession();
-            builder.Services.AddHttpContextAccessor(); // Required for views to access session
+            builder.Services.AddHttpContextAccessor();
 
             var app = builder.Build();
 

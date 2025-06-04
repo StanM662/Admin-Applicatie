@@ -41,3 +41,41 @@ Account Stan logged in at 4-6-2025 15:17:29.
 Edited customer Neo with ID 1 at 4-6-2025 15:18:03.   -   Stan
 Account Stan logged in at 6/4/2025 3:20:56 PM.
 Created product Matrixbril with ID 4 at 6/4/2025 3:24:58 PM.   -   Stan
+Account 123 logged in at 6/4/2025 3:38:33 PM.
+Account Stan logged in at 6/4/2025 3:42:13 PM.
+Created product Part with ID 5 at 6/4/2025 3:49:12 PM.   -   Stan
+Account 123 logged in at 6/4/2025 3:53:42 PM.
+Account Stan logged in at 6/4/2025 3:54:27 PM.
+Account Stan logged in at 6/4/2025 3:56:29 PM.
+Account Stan logged in at 6/4/2025 3:58:14 PM.
+Account Stan logged in at 6/4/2025 4:00:10 PM.
+Account Stan logged in at 6/4/2025 4:15:39 PM.
+Account 123 logged in at 6/4/2025 4:17:00 PM.
+Account 123 logged in at 6/4/2025 4:23:43 PM.
+Account 123 changed its name to 1234 at 6/4/2025 4:23:48 PM.
+Account 1234 changed its name to 123 at 6/4/2025 4:23:51 PM.
+Account 123 changed its password at 6/4/2025 4:23:53 PM.
+Account 123 changed its password at 6/4/2025 4:23:55 PM.
+Account 123 logged in at 6/4/2025 4:29:14 PM.
+Account 123 changed its name to 1234 at 6/4/2025 4:29:17 PM.
+Account 1234 changed its name to 123 at 6/4/2025 4:29:19 PM.
+Account 123 changed its password at 6/4/2025 4:29:25 PM.
+Account 123 changed its password at 6/4/2025 4:29:26 PM.
+Account 123 changed its password at 6/4/2025 4:29:27 PM.
+Deleted product Part with ID 5 at 6/4/2025 4:30:03 PM.   -   123
+Created product M5 Moer with ID 6 at 6/4/2025 4:30:33 PM.   -   123
+Invalid login attempt for account Stan at 6/4/2025 4:31:38 PM.
+Account Stan logged in at 6/4/2025 4:31:41 PM.
+Created product M5 Moer with ID 7 at 6/4/2025 4:31:55 PM.   -   Stan
+Deleted product M5 Moer with ID 7 at 6/4/2025 4:32:01 PM.   -   Stan
+Deleted product M5 Moer with ID 6 at 6/4/2025 4:32:03 PM.   -   Stan
+Account 123 logged in at 6/4/2025 4:34:43 PM.
+Created product test with ID 8 at 6/4/2025 4:34:51 PM.   -   123
+Deleted product test with ID 8 at 6/4/2025 4:34:55 PM.   -   123
+Account 123 logged in at 6/4/2025 4:36:07 PM.
+Created product test with ID 9 at 6/4/2025 4:36:15 PM.   -   123
+Account 123 logged in at 6/4/2025 4:40:05 PM.
+Created part 123 with ID 5 at 6/4/2025 4:40:14 PM.   -   123
+Deleted product test with ID 9 at 6/4/2025 4:40:19 PM.   -   123
+Deleted part 123 with ID 5 at 6/4/2025 4:40:24 PM.   -   123
+Account 123 logged out at 6/4/2025 4:40:41 PM.
