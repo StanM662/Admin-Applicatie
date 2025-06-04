@@ -1,3 +1,4 @@
+using System.Globalization;
 using DataAccessLayer;
 using DataAccessLayer.Interfaces;
 using DataAccessLayer.Repositories;
@@ -9,6 +10,10 @@ namespace KE03_INTDEV_SE_2_Base
     {
         public static void Main(string[] args)
         {
+            var cultureInfo = new CultureInfo("en-US");
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
