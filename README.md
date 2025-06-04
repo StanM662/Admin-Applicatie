@@ -13,7 +13,7 @@ Wij hebben het voorbeeld gebruikt dat ons is gegeven door de docenten als basis 
 
 
 Om in te loggen op de applicatie, kan je een van vier accounts gebruiken:
-- Naam: Stan     Login: Stan123
-- Naam: Rick     Login: Rick123
-- Naam: Sander   Login: Sander123
-- Naam: 123      Login: 123
+- Naam: Stan     | Login: Stan123
+- Naam: Rick     | Login: Rick123
+- Naam: Sander   | Login: Sander123
+- Naam: 123      | Login: 123
