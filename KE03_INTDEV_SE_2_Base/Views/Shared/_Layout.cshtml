@@ -1,5 +1,6 @@
 ﻿@{
     string isLoggedIn = Context.Session.GetString("isLoggedIn") ?? "False";
+    string name = Context.Session.GetString("UserName") ?? "Gebruiker";
     var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
 }
 <!DOCTYPE html>
@@ -11,29 +12,30 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/KE03_INTDEV_SE_2_Base.styles.css" asp-append-version="true" />
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
 </head>
 <body>
     <header>
         @if (isLoggedIn == "True")
         {
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <nav class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
                 <div class="container-fluid">
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Admin Applicatie</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+
                     <div class="collapse navbar-collapse" id="mainNavbar">
-                        <ul class="navbar-nav flex-grow-1">
+
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" ? "active" : "")" asp-controller="Home" asp-action="Index">
+                                <a class="nav-link @(currentController == "Home" ? "active" : "")" asp-controller="Home" asp-action="Index">
                                     <i class="bi bi-house-door"></i> Home
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Customers" ? "active" : "")" asp-controller="Customers" asp-action="Index">
+                                <a class="nav-link @(currentController == "Customers" ? "active" : "")" asp-controller="Customers" asp-action="Index">
                                     <i class="bi bi-people"></i> Customers
                                 </a>
                             </li>
@@ -48,18 +50,21 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Privacy" ? "active" : "")" asp-controller="Privacy" asp-action="Index">
+                                <a class="nav-link @(currentController == "Privacy" ? "active" : "")" asp-controller="Privacy" asp-action="Index">
                                     <i class="bi bi-shield-lock"></i> Privacy
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Logs" ? "active" : "")" asp-controller="Logs" asp-action="Index">
+                                <a class="nav-link @(currentController == "Logs" ? "active" : "")" asp-controller="Logs" asp-action="Index">
                                     <i class="bi bi-journal-text"></i> Logs
                                 </a>
                             </li>
+                        </ul>
+
+                        <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
-                                <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Login" ? "active" : "")" asp-controller="Login" asp-action="Index">
-                                    <i class="bi bi-person-circle"></i> Account
+                                <a class="nav-link @(currentController == "Login" ? "active" : "")" asp-controller="Login" asp-action="Index" title="Account">
+                                    Welkom @name <i class="bi bi-person-circle fs-5 text-white ms-1"></i>
                                 </a>
                             </li>
                         </ul>
@@ -85,7 +90,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-
 
     <script>
         $(document).ready(function () {
