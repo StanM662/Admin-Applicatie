@@ -29,8 +29,13 @@
 
     <!-- Bestellingen -->
     <div class="dashboard-card toggle-card">
-        <span class="dashboard-label">⬍ Totaal bestellingen:</span>
-        <span class="dashboard-value">@Model.TotalOrders</span>
+        <span class="dashboard-label">Totaal bestellingen:</span>
+        <div>
+            <span class="dashboard-value">@Model.TotalOrders </span>
+            <span class="dashboard-pijltje">⬍</span>
+        </div>
+
+        
     </div>
     <div class="dropdown-content">
         @if (Model.Orders != null && Model.Orders.Any())

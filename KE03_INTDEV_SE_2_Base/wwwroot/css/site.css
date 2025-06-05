@@ -181,3 +181,9 @@ footer {
     padding: 0.5rem 1rem; 
     cursor: pointer;
 }
+
+.pijltje {
+    color: black;
+    margin-left: 10px;
+    font-size: 20px;
+}
