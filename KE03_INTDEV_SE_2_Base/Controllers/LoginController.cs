@@ -85,7 +85,7 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> EditPassword(string Name, string Password, string NewPassword)
+        public async Task<IActionResult> EditPassword(string Name, string Password, string NewPassword, string OldPassword)
         {
             if (string.IsNullOrWhiteSpace(NewPassword))
             {
@@ -101,17 +101,25 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
                 ModelState.AddModelError("NewPassword", "Ongeldige gebruikersnaam of wachtwoord.");
                 return View("Index");
             }
+            
+            string _OldPassword = matchedAccount.Password;
+            if (OldPassword != _OldPassword)
+            {
+                ModelState.AddModelError("NewPassword", "Oud wachtwoord komt niet overeen.");
+                return View("Index");
+            }
+            else
+            {
+                matchedAccount.Password = NewPassword;
+                await _context.SaveChangesAsync();
 
-            string oldPassword = matchedAccount.Password;
-            matchedAccount.Password = NewPassword;
-            await _context.SaveChangesAsync();
+                LogChange($"Account {matchedAccount.Name} changed its password at {DateTime.Now}.", "logFile.txt");
 
-            LogChange($"Account {matchedAccount.Name} changed its password at {DateTime.Now}.", "logFile.txt");
+                HttpContext.Session.SetString("Password", NewPassword);
+                HttpContext.Session.SetString("isLoggedIn", "True");
 
-            HttpContext.Session.SetString("Password", NewPassword);
-            HttpContext.Session.SetString("isLoggedIn", "True");
-
-            return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         private void LogChange(string logMessage, string path)
