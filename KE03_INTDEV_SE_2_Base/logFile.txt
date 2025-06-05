@@ -93,3 +93,12 @@ Account Rick logged in at 6/5/2025 9:56:37 AM.
 Account Stan logged in at 6/5/2025 9:59:28 AM.
 Account Rick logged in at 6/5/2025 10:01:46 AM.
 Account Rick logged in at 6/5/2025 10:07:33 AM.
+Account 123 logged in at 6/5/2025 10:23:29 AM.
+Account 123 logged in at 6/5/2025 10:37:41 AM.
+Account 123 logged in at 6/5/2025 10:41:04 AM.
+Account 123 logged in at 6/5/2025 10:41:59 AM.
+Account 123 logged in at 6/5/2025 10:42:47 AM.
+Account 123 logged in at 6/5/2025 10:45:34 AM.
+Invalid login attempt for account 123 at 6/5/2025 10:47:10 AM.
+Account 123 logged in at 6/5/2025 10:47:12 AM.
+Account 123 logged out at 6/5/2025 10:47:30 AM.
