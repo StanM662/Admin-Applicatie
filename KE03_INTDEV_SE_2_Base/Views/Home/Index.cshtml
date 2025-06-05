@@ -1,9 +1,10 @@
 ﻿@model KE03_INTDEV_SE_2_Base.ViewModels.DashboardViewModel
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewData["Title"] = "Dashboard";
 }
-
+<div class="welkom"><h1> Welkom, @HttpContextAccessor.HttpContext.Session.GetString("UserName")!</h1></div>
 <div class="dashboard-container">
     <h2 class="dashboard-title">Dashboard</h2>
 

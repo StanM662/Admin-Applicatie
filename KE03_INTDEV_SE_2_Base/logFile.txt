@@ -79,3 +79,13 @@ Created part 123 with ID 5 at 6/4/2025 4:40:14 PM.   -   123
 Deleted product test with ID 9 at 6/4/2025 4:40:19 PM.   -   123
 Deleted part 123 with ID 5 at 6/4/2025 4:40:24 PM.   -   123
 Account 123 logged out at 6/4/2025 4:40:41 PM.
+Account Rick logged in at 6/5/2025 9:17:26 AM.
+Account Rick logged in at 6/5/2025 9:17:45 AM.
+Account Rick logged in at 6/5/2025 9:24:35 AM.
+Account Rick logged in at 6/5/2025 9:26:30 AM.
+Account Stan logged in at 6/5/2025 9:30:31 AM.
+Account Rick logged in at 6/5/2025 9:31:06 AM.
+Account Rick logged in at 6/5/2025 9:33:39 AM.
+Account Rick logged in at 6/5/2025 9:35:32 AM.
+Account Rick logged in at 6/5/2025 9:36:26 AM.
+Account Rick logged in at 6/5/2025 9:38:24 AM.
