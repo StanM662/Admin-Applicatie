@@ -8,7 +8,7 @@
     }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus, .logout {
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
@@ -175,5 +175,9 @@ footer {
 
 .logout {
     background-color: red;
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem red;
+    color: white;
+    border: none;
+    border-radius: 4px; 
+    padding: 0.5rem 1rem; 
+    cursor: pointer;
 }
