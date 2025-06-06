@@ -39,7 +39,7 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
                     HttpContext.Session.SetString("Password", matchedAccount.Password);
                     HttpContext.Session.SetString("isLoggedIn", "True");
                     LogChange($"Account {account.Name} logged in at {DateTime.Now}.", "logFile.txt");
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -47,7 +47,7 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
                     LogChange($"Invalid login attempt for account {account.Name} at {DateTime.Now}.", "logFile.txt");
                 }
             }
-            return View("Index");
+            return View("Home/Index");
         }
 
         public async Task<IActionResult> EditName(string Name, string Password, string NewName)
