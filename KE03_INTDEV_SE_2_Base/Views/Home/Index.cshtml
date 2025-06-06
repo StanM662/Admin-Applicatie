@@ -4,14 +4,21 @@
 @{
     ViewData["Title"] = "Dashboard";
 }
-<div class="welkom-dashboard"><h1> Welkom, @HttpContextAccessor.HttpContext.Session.GetString("UserName")!</h1></div>
+
+<div class="welkom-dashboard">
+    <h1>Welkom, @HttpContextAccessor.HttpContext.Session.GetString("UserName")!</h1>
+</div>
+
 <div class="dashboard-container">
     <h2 class="dashboard-title">Dashboard</h2>
 
     <!-- Klanten -->
     <div class="dashboard-card toggle-card">
-        <span class="dashboard-label">⬍ Totaal klanten:</span>
-        <span class="dashboard-value">@Model.TotalCustomers</span>
+        <span class="dashboard-label">Totaal klanten:</span>
+        <div>
+            <span class="dashboard-value">@Model.TotalCustomers</span>
+            <span class="dashboard-pijltje">⬍</span>
+        </div>
     </div>
     <div class="dropdown-content">
         @if (Model.Customers != null && Model.Customers.Any())
@@ -31,11 +38,9 @@
     <div class="dashboard-card toggle-card">
         <span class="dashboard-label">Totaal bestellingen:</span>
         <div>
-            <span class="dashboard-value">@Model.TotalOrders </span>
+            <span class="dashboard-value">@Model.TotalOrders</span>
             <span class="dashboard-pijltje">⬍</span>
         </div>
-
-        
     </div>
     <div class="dropdown-content">
         @if (Model.Orders != null && Model.Orders.Any())
@@ -53,8 +58,11 @@
 
     <!-- Producten -->
     <div class="dashboard-card toggle-card">
-        <span class="dashboard-label">⬍ Totaal producten:</span>
-        <span class="dashboard-value">@Model.TotalProducts</span>
+        <span class="dashboard-label">Totaal producten:</span>
+        <div>
+			<span class="dashboard-value">@Model.TotalProducts</span>
+            <span class="dashboard-pijltje">⬍</span>
+        </div>
     </div>
     <div class="dropdown-content">
         @if (Model.Products != null && Model.Products.Any())
@@ -72,15 +80,18 @@
 
     <!-- Onderdelen -->
     <div class="dashboard-card toggle-card">
-        <span class="dashboard-label">⬍ Totaal onderdelen:</span>
-        <span class="dashboard-value">@Model.TotalParts</span>
+        <span class="dashboard-label">Totaal onderdelen:</span>
+        <div>
+            <span class="dashboard-value">@Model.TotalParts</span>
+            <span class="dashboard-pijltje">⬍</span>
+        </div>
     </div>
     <div class="dropdown-content">
         @if (Model.Parts != null && Model.Parts.Any())
         {
             foreach (var part in Model.Parts)
             {
-                <div>@part.Name - €@part.Price </div>
+                <div>@part.Name - €@part.Price</div>
             }
         }
         else
@@ -88,4 +99,77 @@
             <div>Geen onderdelen gevonden.</div>
         }
     </div>
+
+    <!-- Grafiek Bestellingen per dag -->
+    <div class="card mt-4 p-4">
+        <h4>Aantal bestellingen per dag</h4>
+        <canvas id="ordersChart" height="100"></canvas>
+    </div>
+
+    <!-- Grafiek Klanten per dag -->
+    <div class="card mt-4 p-4">
+        <h4>Aantal klanten per dag</h4>
+        <canvas id="customersChart" height="100"></canvas>
+    </div>
 </div>
+
+<!-- Chart.js library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Data voor bestellingen
+    const orderLabels = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.OrdersPerDay.Keys));
+    const orderData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.OrdersPerDay.Values));
+
+    const ctxOrders = document.getElementById('ordersChart').getContext('2d');
+    new Chart(ctxOrders, {
+        type: 'line',
+        data: {
+            labels: orderLabels,
+            datasets: [{
+                label: 'Aantal bestellingen per dag',
+                data: orderData,
+                borderColor: 'rgba(54, 162, 235, 1)',
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                tension: 0.3,
+                fill: true,
+                pointRadius: 3
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: { title: { display: true, text: 'Datum' } },
+                y: { beginAtZero: true, title: { display: true, text: 'Aantal bestellingen' } }
+            }
+        }
+    });
+
+    // Data voor klanten
+    const customerLabels = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.CustomersPerDay.Keys));
+    const customerData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.CustomersPerDay.Values));
+
+    const ctxCustomers = document.getElementById('customersChart').getContext('2d');
+    new Chart(ctxCustomers, {
+        type: 'line',
+        data: {
+            labels: customerLabels,
+            datasets: [{
+                label: 'Aantal klanten per dag',
+                data: customerData,
+                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                tension: 0.3,
+                fill: true,
+                pointRadius: 3
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: { title: { display: true, text: 'Datum' } },
+                y: { beginAtZero: true, title: { display: true, text: 'Aantal klanten' } }
+            }
+        }
+    });
+</script>

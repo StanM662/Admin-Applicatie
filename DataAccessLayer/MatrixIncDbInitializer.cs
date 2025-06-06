@@ -20,19 +20,19 @@ namespace DataAccessLayer
 
             var customers = new Customer[]
             {
-        new Customer { Name = "Neo", Address = "123 Elm St", Active = true },
-        new Customer { Name = "Morpheus", Address = "456 Oak St", Active = true },
-        new Customer { Name = "Trinity", Address = "789 Pine St", Active = true }
+        new Customer { Name = "Neo", Address = "123 Elm St", Active = true, CreatedAt= DateTime.Parse("2025-02-06") },
+        new Customer { Name = "Morpheus", Address = "456 Oak St", Active = true, CreatedAt= DateTime.Parse("2025-02-06") },
+        new Customer { Name = "Trinity", Address = "789 Pine St", Active = true, CreatedAt= DateTime.Parse("2025-03-06") }
             };
             context.Customers.AddRange(customers);
             context.SaveChanges();
 
             var orders = new Order[]
             {
-        new Order { CustomerId = customers[0].Id, OrderDate = DateTime.Parse("2021-01-01") },
-        new Order { CustomerId = customers[0].Id, OrderDate = DateTime.Parse("2021-02-01") },
-        new Order { CustomerId = customers[1].Id, OrderDate = DateTime.Parse("2021-02-01") },
-        new Order { CustomerId = customers[2].Id, OrderDate = DateTime.Parse("2021-03-01") }
+        new Order { CustomerId = customers[0].Id, OrderDate = DateTime.Parse("2025-02-06") },
+        new Order { CustomerId = customers[0].Id, OrderDate = DateTime.Parse("2025-02-06") },
+        new Order { CustomerId = customers[1].Id, OrderDate = DateTime.Parse("2025-03-06") },
+        new Order { CustomerId = customers[2].Id, OrderDate = DateTime.Parse("2025-04-06") }
             };
             context.Orders.AddRange(orders);
 

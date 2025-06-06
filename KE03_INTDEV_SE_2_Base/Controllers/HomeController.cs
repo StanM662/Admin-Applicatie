@@ -14,17 +14,34 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        // Haal orders en klanten op uit de database
+        var orders = _context.Orders.ToList();
+        var customers = _context.Customers.ToList();
+
+        var ordersPerDay = orders
+            .GroupBy(o => o.OrderDate.Date)
+            .OrderBy(g => g.Key)
+            .ToDictionary(g => g.Key.ToString("yyyy-MM-dd"), g => g.Count());
+
+        var customersPerDay = customers
+            .GroupBy(c => c.CreatedAt.Date)
+            .OrderBy(g => g.Key)
+            .ToDictionary(g => g.Key.ToString("yyyy-MM-dd"), g => g.Count());
+
         var viewModel = new DashboardViewModel
         {
-            TotalCustomers = _context.Customers.Count(),
-            TotalOrders = _context.Orders.Count(),
+            TotalCustomers = customers.Count,
+            TotalOrders = orders.Count,
             TotalProducts = _context.Products.Count(),
             TotalParts = _context.Parts.Count(),
 
-            Customers = _context.Customers.ToList(),
-            Orders = _context.Orders.ToList(),
+            Customers = customers,
+            Orders = orders,
             Products = _context.Products.ToList(),
-            Parts = _context.Parts.ToList()
+            Parts = _context.Parts.ToList(),
+
+            OrdersPerDay = ordersPerDay,
+            CustomersPerDay = customersPerDay
         };
 
         return View(viewModel);
