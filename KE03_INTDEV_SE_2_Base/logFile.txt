@@ -177,3 +177,9 @@ Account 123 logged in at 6/6/2025 10:38:57 AM.
 Account 123 logged in at 6/6/2025 10:40:48 AM.
 Account 123 logged in at 6/6/2025 10:42:37 AM.
 Account 123 logged in at 6/6/2025 10:43:16 AM.
+Account Stan logged in at 6/6/2025 10:56:34 AM.
+Created customer Rik with ID 5 at 6/6/2025 10:57:21 AM.   -   Stan
+Edited customer Stan with ID 5 at 6/6/2025 10:57:32 AM.   -   Stan
+Account Stan changed its name to Staaaan at 6/6/2025 10:58:05 AM.
+Account Staaaan changed its name to Stan at 6/6/2025 11:04:18 AM.
+Account Stan logged out at 6/6/2025 11:04:20 AM.
