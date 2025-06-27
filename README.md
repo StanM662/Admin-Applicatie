@@ -17,3 +17,6 @@ Om in te loggen op de applicatie, kan je een van vier accounts gebruiken:
 - Naam: Rick     | Login: Rick123
 - Naam: Sander   | Login: Sander123
 - Naam: 123      | Login: 123
+
+
+https://github.com/StanM662/Admin-Applicatie
