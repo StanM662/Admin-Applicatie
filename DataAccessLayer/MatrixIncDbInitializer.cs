@@ -18,24 +18,6 @@ namespace DataAccessLayer
                 return; // DB has been seeded
             }
 
-            var customers = new Customer[]
-            {
-        new Customer { Name = "Neo", Address = "123 Elm St", Active = true, CreatedAt= DateTime.Parse("2025-02-06") },
-        new Customer { Name = "Morpheus", Address = "456 Oak St", Active = true, CreatedAt= DateTime.Parse("2025-02-06") },
-        new Customer { Name = "Trinity", Address = "789 Pine St", Active = true, CreatedAt= DateTime.Parse("2025-03-06") }
-            };
-            context.Customers.AddRange(customers);
-            context.SaveChanges();
-
-            var orders = new Order[]
-            {
-        new Order { CustomerId = customers[0].Id, OrderDate = DateTime.Parse("2025-02-06") },
-        new Order { CustomerId = customers[0].Id, OrderDate = DateTime.Parse("2025-02-06") },
-        new Order { CustomerId = customers[1].Id, OrderDate = DateTime.Parse("2025-03-06") },
-        new Order { CustomerId = customers[2].Id, OrderDate = DateTime.Parse("2025-04-06") }
-            };
-            context.Orders.AddRange(orders);
-
             var products = new Product[]
             {
         new Product { Name = "Nebuchadnezzar", Description = "Het schip waarop Neo voor het eerst de echte wereld leert kennen", Price = 10000.00f },
@@ -52,6 +34,24 @@ namespace DataAccessLayer
         new Part { Name = "Koelvloeistofpomp", Description = "Koeling van de motor of elektronische systemen.", Price = 10f }
             };
             context.Parts.AddRange(parts);
+
+            var customers = new Customer[]
+            {
+        new Customer { Name = "Neo", Address = "123 Elm St", Active = true, CreatedAt= DateTime.Parse("2025-02-06") },
+        new Customer { Name = "Morpheus", Address = "456 Oak St", Active = true, CreatedAt= DateTime.Parse("2025-02-06") },
+        new Customer { Name = "Trinity", Address = "789 Pine St", Active = true, CreatedAt= DateTime.Parse("2025-03-06") }
+            };
+            context.Customers.AddRange(customers);
+            context.SaveChanges();
+
+            var orders = new Order[]
+            {
+        new Order { CustomerId = customers[0].Id, OrderDate = DateTime.Parse("2025-02-06"), Products = new List<Product> { products[0] } },
+        new Order { CustomerId = customers[0].Id, OrderDate = DateTime.Parse("2025-02-06"), Products = new List<Product> { products[0], products[1] } },
+        new Order { CustomerId = customers[1].Id, OrderDate = DateTime.Parse("2025-03-06"), Products = new List<Product> { products[2] } },
+        new Order { CustomerId = customers[2].Id, OrderDate = DateTime.Parse("2025-04-06"), Products = new List<Product> { products[1], products[2], products[0] } }
+            };
+            context.Orders.AddRange(orders);
 
             var accounts = new Account[]
             {

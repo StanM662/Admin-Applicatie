@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DataAccessLayer.Models.Order>
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<h1>Orders</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().Id)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Customer.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Products)</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.Customer.Name)</td>
+                <td>
+                    @foreach (var product in item.Products)
+                    {
+                        @product.Name
+
+                        <br />
+                    }
+                </td>
+                <td>
+                    @{
+                        float TotalPrice = 0;
+                        foreach (var product in item.Products)
+                        {
+                            TotalPrice += product.Price;
+                        }
+                    }
+                    @TotalPrice.ToString("C")  <!-- Formats as currency -->
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

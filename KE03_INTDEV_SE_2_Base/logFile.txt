@@ -177,3 +177,30 @@ Account 123 logged in at 6/6/2025 10:38:57 AM.
 Account 123 logged in at 6/6/2025 10:40:48 AM.
 Account 123 logged in at 6/6/2025 10:42:37 AM.
 Account 123 logged in at 6/6/2025 10:43:16 AM.
+Account 123 logged in at 6/6/2025 10:46:13 AM.
+Account 123 logged in at 6/6/2025 10:51:03 AM.
+Account Stan logged in at 6/6/2025 11:30:27 AM.
+Account Stan logged in at 6/6/2025 11:31:16 AM.
+Account Stan logged in at 6/13/2025 12:51:56 PM.
+Created product Red pill with ID 4 at 6/13/2025 12:52:34 PM.   -   Stan
+Account Stan logged in at 6/17/2025 11:01:37 AM.
+Created customer iusfgiuhsgjsrgsfsfggu with ID 4 at 6/17/2025 11:09:25 AM.   -   Stan
+Account Stan logged in at 6/22/2025 4:45:54 PM.
+Invalid login attempt for account Neo at 6/26/2025 11:09:02 AM.
+Account Stan logged in at 6/26/2025 11:09:41 AM.
+Account Stan logged in at 6/26/2025 1:41:00 PM.
+Account Stan logged in at 6/27/2025 9:54:37 AM.
+Account Stan logged in at 6/27/2025 9:55:27 AM.
+Account Stan logged in at 6/27/2025 10:01:58 AM.
+Account Stan logged in at 6/27/2025 10:06:24 AM.
+Account Stan logged in at 6/27/2025 10:23:04 AM.
+Account Stan logged in at 6/27/2025 10:23:38 AM.
+Account Stan logged in at 6/27/2025 10:24:16 AM.
+Account Stan logged in at 6/27/2025 10:34:21 AM.
+Account Stan logged in at 6/27/2025 10:35:24 AM.
+Account Stan logged in at 6/27/2025 10:38:07 AM.
+Account Stan logged in at 6/27/2025 10:40:18 AM.
+Account Stan logged in at 6/27/2025 10:45:24 AM.
+Account Stan logged in at 6/27/2025 10:46:00 AM.
+Account 123 logged in at 6/27/2025 10:47:38 AM.
+Account 123 logged in at 6/27/2025 10:49:06 AM.
